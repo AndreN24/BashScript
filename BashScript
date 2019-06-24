@@ -1,0 +1,33 @@
+#!/bin/bash
+#Simple bash script to try out some functions
+#By André Normann
+#2019-06-24
+
+echo "Choose a directory"
+read directory  #reads directory given
+if [ -d ~/$directory ] #if directory exists then
+then
+	echo "your Directory is /home/$USER/$directory" #Echo the current directory
+else
+	echo "Directory $directory not found" #else echo this and exit
+	exit
+fi
+
+cd ~/$directory #change directory to given directory
+ls -l #list all files
+echo "choose a file to read or make a file in the directory"
+read file #reads the file
+
+if [ -f ~/$directory/$file ] #if the file exists then
+then
+	cat $file #read file
+else
+	echo "created the file $file" #else create the file
+	touch $file
+fi
+
+
+for i in $( ls ) #lists every listed item in the curent directory
+do
+echo "item: $i" #echoes item i
+done
